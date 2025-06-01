@@ -1,0 +1,10 @@
+.claims-handling-form-container {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.claims-form {
+  display: flex;
+  flex-direction: column;
+}
