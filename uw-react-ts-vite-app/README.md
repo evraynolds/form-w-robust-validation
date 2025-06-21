@@ -1,4 +1,4 @@
-# UW Front-End challenge: React + TypeScript + Vite
+# UW Front-End Form: React + TypeScript + Vite
 
 To run this frontend project (uw-react-ts-vite-app), from the root directory run:
 

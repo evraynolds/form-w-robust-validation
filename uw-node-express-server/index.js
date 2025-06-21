@@ -17,14 +17,17 @@ app.post("/receive", urlencodedParser, (req, res) => {
   const { claimDate, claimDescription, claimCategory } = req.body;
   const content = claimDate && claimDescription && claimCategory;
   if (content) {
-    fs.writeFile(
-      "./test.txt",
-      `${claimDate} ${claimCategory} ${claimDescription}`,
+    fs.appendFile(
+      "./claims.log",
+      `${claimDate} ${claimCategory} ${claimDescription} \r\n`,
       (err) => {
         if (err) {
           console.error(err);
         } else {
-          console.log("File written successfully");
+          console.log(
+            "File written successfully",
+            fs.readFileSync("./claims.log", "utf8")
+          );
         }
       }
     );
