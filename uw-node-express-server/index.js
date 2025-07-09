@@ -14,20 +14,16 @@ app.use(
 
 // This is where the POST request receives the claims data and writes to a file.
 app.post("/receive", urlencodedParser, (req, res) => {
-  const { claimDate, claimDescription, claimCategory } = req.body;
-  const content = claimDate && claimDescription && claimCategory;
+  const { date, description, category } = req.body;
+  const content = date && description && category;
   if (content) {
-    fs.writeFile(
-      "./test.txt",
-      `${claimDate} ${claimCategory} ${claimDescription}`,
-      (err) => {
-        if (err) {
-          console.error(err);
-        } else {
-          console.log("File written successfully");
-        }
+    fs.writeFile("./test.txt", `${date} ${category} ${description}`, (err) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("File written successfully");
       }
-    );
+    });
     res.send("POST request received successfully!");
   } else {
     throw new Error("Error with incoming data");
